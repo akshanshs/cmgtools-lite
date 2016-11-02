@@ -335,7 +335,7 @@ class EventVars1L_btagSF:
         if event.isData: return ret
 
         # for signal use FastSim corrections
-        if "T1tttt" in self.sample: isFastSim == True
+        #if "T1tttt" in self.sample: isFastSim == True
 
         ################################################################
         ######### METHOD 1A ### ~SFs ###################################

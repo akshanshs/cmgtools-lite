@@ -88,7 +88,7 @@ if __name__ == "__main__":
     ydsFew9 = YieldStore("lepYields")
 
 #    a = "YieldsJune12/lumi2p571/"
-    a = "YieldsJune29/lumi3p99/grid/"
+    a = "Yields/outdir/kappa/MG2/"
     b = a + 'merged/LT'
     btagMethod = ""
     pattern = b+"*NJ6*"
@@ -108,15 +108,15 @@ if __name__ == "__main__":
     yds9.showStats()
 
     #pattern = 'arturstuff/grid/merged/LT\*NJ6\*'
-    printSamps = ['TTsemiLep','TTdiLep','TTV','SingleT', 'WJets', 'DY', 'QCD','background','T1t$^4$ 1.5$/$0.1','T1t$^4$ 1.2$/$0.8']
+    printSamps = ['TTsemiLep','TTdiLep','TTV','SingleT', 'WJets', 'DY', 'QCD','background'] #,'T1t$^4$ 1.5$/$0.1','T1t$^4$ 1.2$/$0.8']
 #    printSamps = ['TTJets','TTV','SingleTop', 'WJets', 'DY','EWK','T1t$^4$ 1.5$/$0.1','T1t$^4$ 1.2$/$0.8']
 
     if 1 ==1:
         cats = ('SR_MB', 'CR_MB', 'SR_SB', 'CR_SB')
         for cat in cats:
-            f =  open('yields' + cat +btagMethod+'.tex','w')
-            samps = [('TTsemiLep',cat),('TTdiLep',cat),('TTV',cat), ('SingleT',cat), ('WJets',cat), ('DY',cat), ('QCD',cat), ('background',cat),
-                     ('T1tttt_Scan_mGo1500_mLSP100',cat),('T1tttt_Scan_mGo1200_mLSP800',cat)]
+            f =  open('Yields/outdir/kappa/MG2/merged/' + cat +btagMethod+'.tex','w')
+            samps = [('TTsemiLep',cat),('TTdiLep',cat),('TTV',cat), ('SingleT',cat), ('WJets',cat), ('DY',cat), ('QCD',cat), ('background',cat)] #,
+#                     ('T1tttt_Scan_mGo1500_mLSP100',cat),('T1tttt_Scan_mGo1200_mLSP800',cat)]
 #            samps = [('TTJets',cat),('TTV',cat), ('SingleTop',cat), ('WJets',cat), ('DY',cat), ('EWK',cat),
 #                     ('T1tttt_Scan_mGo1500_mLSP100',cat),('T1tttt_Scan_mGo1200_mLSP800',cat)]
             printLatexHeader(len(samps), f, 1)
@@ -191,15 +191,15 @@ if __name__ == "__main__":
 
     printLatexHeader(len(samps), f, 3)
 
-    samps = [('data_QCDsubtr','SR_SB'),('data_QCDsubtr','CR_SB'),('data_QCDsubtr','Rcs_SB'),('EWK','Kappa'),('data_QCDsubtr','CR_MB'),
+    samps = [('data_QCDsubtr','SR_SB'),('data_QCDsubtr','CR_SB'),('data','CR_SB'),('data_QCDpred','CR_SB'),('data_QCDsubtr','Rcs_SB'),('EWK','Kappa'),('data_QCDsubtr','CR_MB'),
             ('data_QCDsubtr','SR_MB_predict'), ('data','SR_MB')]
     label = 'SB, MB, and predictions for 0.8 fb$^{-1}$ for $n_{jet}$ 6,8 '
-    printSamps = ['data 45j, SR','data 4j5, CR','data 4j5, Rcs$^{EWK}$','$\\kappa^{EWK}$, MC','data 68j, CR', 'data 68j, pred (val $\pm$ stat $\pm$ syst)', 'data 68j, SR']
+    printSamps = ['data 45j, SR','data_QCD 4j5, CR','data 45 CR','QCD_pred 45 CR','data 4j5, Rcs$^{EWK}$','$\\kappa^{EWK}$, MC','data 68j, CR', 'data 68j, pred (val $\pm$ stat $\pm$ syst)', 'data 68j, SR']
 
-    yds6.printLatexTable(samps, printSamps, label,f, True) 
+    yds6.printLatexTable(samps, printSamps, label,f, False)  # changing to False : no syst 
     label = 'SB, MB, and predictions for 0.8 fb$^{-1}$ for njet $\\geq 9$'
-    printSamps = ['data 45j, SR','data 4j5, CR','data 4j5, Rcs$^{EWK}$','$\\kappa^{EWK}$, MC','data 9ij, CR', 'data 9ij, pred (val $\pm$ stat $\pm$ syst)', 'data 9ij, SR']
-    yds9.printLatexTable(samps, printSamps, label, f, True)
+    printSamps = ['data 45j, SR','data-QCD 4j5, CR','data 45 CR','QCD_pred 45 CR','data 4j5, Rcs$^{EWK}$','$\\kappa^{EWK}$, MC','data 9ij, CR', 'data 9ij, pred (val $\pm$ stat $\pm$ syst)', 'data 9ij, SR']
+    yds9.printLatexTable(samps, printSamps, label, f, False)
     printLatexFooter(f, 3)
     f.close()
 

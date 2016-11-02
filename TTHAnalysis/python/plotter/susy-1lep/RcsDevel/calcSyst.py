@@ -34,8 +34,13 @@ def getHnames(fname,tdir):
 
     return hnames
 
-def getSystHist(tfile, hname, syst = "Xsec"):
+def getSystHist(tfile, hname , syst = 'Xsec' ):
+    print 'check1'
+ #   syst = 'ISR'
+#    hname = 'T1tttt_Scan'
+    print syst
     print tfile, hname, syst
+    print 'check2'
     if "Env" in syst or "RMS" in syst:
         hNorm = tfile.Get(hname)
         if hNorm: print "", #"got it", hname
@@ -94,8 +99,9 @@ def getSystHist(tfile, hname, syst = "Xsec"):
     
         upName = hname + '_' + syst + '-Up'
         dnName = hname + '_' + syst + '-Down'
-    
-        #print tfile, hname, upName, dnName
+        
+        print 'check3'
+        print tfile, hname, upName, dnName
     
         hNorm = tfile.Get(hname)
         hUp = tfile.Get(upName)
@@ -161,26 +167,26 @@ def makeSystHists(fileList):
     # filter
     #fileList = [fname for fname in fileList if 'NB3' not in fname]
 
-    #hnames = ["T1tttt_Scan"] # process name
+    hnames = ["T1tttt_Scan"] # process name
     #hnames = ["EWK"] # process name
     #hnames = ["EWK","TTJets","WJets","SingleTop","DY","TTV"] # process name
-    hnames = ["EWK","TTJets","WJets","SingleT","DY","TTV"] # process name
+    #hnames = ["EWK","TTJets","WJets","SingleT","DY","TTV"] # process name
     #hnames = ['T_tWch','TToLeptons_tch','TBar_tWch', 'EWK', 'TToLeptons_sch'] # process name
     #hnames = ["TTJets","WJets","SingleTop","DY","TTV"] # process name
     #hnames = getHnames(fileList[0],'SR_MB') # get process names from file
     #print 'Found these hists:', hnames
 
     #systNames = ["Xsec"]
-    #systNames = ["PU"]
+    systNames = ["PU"]
     #systNames = ["topPt"]
     #systNames = ["Wxsec"]
-    systNames = ["ScaleMatchVar-Env"]
+    #systNames = ["ScaleMatchVar-Env"]
     #systNames = ["PDFUnc-RMS"]
     #systNames = ["Wxsec"]
     #systNames = ["TTVxsec"]
-    systNames = ["lepSF"]
+    #systNames = ["lepSF"]
     #systNames = ["JEC"]
-    systNames = ["DLSlope"]
+    #systNames = ["DLSlope"]
     #systNames = ["DLConst"]
     #systNames = ["JER"]
     #systNames = ["Wpol"]

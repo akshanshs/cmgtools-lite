@@ -23,6 +23,8 @@ eleEta = 2.4
 ###########
 
 corrJEC = "central" # can be "central","up","down"
+#corrJEC = "up"
+##corrJEC = "down"
 JECAllowedValues = ["central","up","down"]
 assert any(val==corrJEC for val in JECAllowedValues)
 

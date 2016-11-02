@@ -13,7 +13,7 @@ xsecFile = "../python/tools/glu_xsecs_13TeV.txt"
 
 cntsSusy = {} # dict for signal counts
 #cntFile = "../python/tools/t1ttt_scan_counts.txt"
-cntFile = "../python/tools/scans/counts_T1tttt_wSkim.txt"
+cntFile = "../python/tools/scans/counts.txt"
 
 def loadSUSYparams():
 
@@ -137,7 +137,12 @@ class EventVars1L_signal:
             ## observable for weight indices 1,2,3,4,6,8 (index 0 corresponds
             ## to nominal scale, indices 5 and 7 correspond to "unphysical"
             ## anti-correlated variations)
+                
 
+            noLHEstuff = True
+            if noLHEstuff:
+                return ret
+            
             global lheDict
 
             if len(lheDict) == 0: loadLHE()

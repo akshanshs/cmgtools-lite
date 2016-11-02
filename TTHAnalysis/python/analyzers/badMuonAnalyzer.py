@@ -38,9 +38,13 @@ class badMuonAnalyzer( Analyzer ):
             foundBadTrack = False
             if muon.innerTrack().isNonnull():
                 it = muon.innerTrack()
-                if it.pt()<minMuPt : continue
-                if it.quality(it.highPurity): continue
-                if it.ptError()/it.pt() < minMuonTrackRelErr: continue
+                bt = muon.muonBestTrack()
+#                gt = muon.globalTrack()
+                if (it.pt()<minMuPt and muon.pt() < minMuPt) : continue
+#                if it.quality(it.highPurity): continue
+#                if it.ptError()/it.pt() < minMuonTrackRelErr: continue
+                if (muon.segmentCompatibility() > 0.3 and bt.ptError()/bt.pt() < 2.0): continue 
+
                 if it.originalAlgo()==suspiciousAlgo and it.algo()==suspiciousAlgo:
                     foundBadTrack = True
 
@@ -49,7 +53,8 @@ class badMuonAnalyzer( Analyzer ):
                 for c in self.handles['packedCandidates'].product():
                     if c.pt()<minMuPt : continue
                     if abs(c.pdgId()) == 13:
-                        if deltaR( muon.eta(), muon.phi(), c.eta(), c.phi() ) < maxDR:
+#                        print muon.segmentCompatibility(muon)
+                        if (deltaR( muon.eta(), muon.phi(), c.eta(), c.phi() ) < maxDR):
                             flagged = True
                             event.crazyMuon.append(muon)
                             break
@@ -79,6 +84,7 @@ class badMuonAnalyzer( Analyzer ):
 
 setattr(badMuonAnalyzer,"defaultConfig", cfg.Analyzer(
         class_object = badMuonAnalyzer,
+        muons = 'slimmedMuons',
         packedCandidates = 'packedPFCandidates',
         )
 )

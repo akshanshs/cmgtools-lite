@@ -8,14 +8,20 @@ from math import hypot
 
 ## Trees -- skimmed with trig_base
 
-Tdir = "samples_HT350/"
+#Tdir = "/nfs/dust/cms/group/susy-desy/Run2/ACDV_Links_Jul26_ICHEP/"    #MG
+Tdir = "/nfs/dust/cms/user/singha/SUSY_2016C/CMSSW_8_0_11/src/CMGTools/TTHAnalysis/python/plotter/comp_MgP_links" #Powheg
+#Tdir = "/nfs/dust/cms/user/singha/SUSY_2016C/CMSSW_8_0_11/src/CMGTools/TTHAnalysis/python/plotter/susy-1lep/RcsDevel/mca/systs/JEC/Tuple_symlinks/"
 # MC
-mcFTdir = "samples_HT350/Friends/"
-sigFTdir = "samples_HT350/Friends/"
+#mcFTdir = "/nfs/dust/cms/group/susy-desy/Run2/ACDV_Links_Jul26_ICHEP/Friends/" # MG
+mcFTdir = "/nfs/dust/cms/user/singha/SUSY_2016C/CMSSW_8_0_11/src/CMGTools/TTHAnalysis/python/plotter/comp_MgP_Flinks" # Powheg
+#sigFTdir = "/nfs/dust/cms/group/susy-desy/Run2/MC/CMGtuples/NtupleJuly12_HT350skim/Friends_ICHEP/"
 
+#sigFTdir = "/nfs/dust/cms/user/singha/SUSY_2016C/CMSSW_8_0_11/src/CMGTools/TTHAnalysis/python/plotter/susy-1lep/RcsDevel/mca/systs/JEC/FT_symlinks/"
 # new data
-dataFTdir = "samples_HT350/Friends/"
+#dataFTdir = "samples_HT350/Friends/"
 
+#dataFTdir = "/nfs/dust/cms/group/susy-desy/Run2/ACDV_Links_Jul26_ICHEP/Friends/" # MG
+dataFTdir = "nfs/dust/cms/user/singha/SUSY_2016C/CMSSW_8_0_11/src/CMGTools/TTHAnalysis/python/plotter/comp_MgP_Flinks" #Powheg 
 
 #Dilepton stuff
 #mcFTdir = "/nfs/dust/cms/user/kirschen/newSUSYStuff/CMSSW_7_4_12_patch4/src/CMGTools/SUSYAnalysis/macros/FreshFriends_V2"

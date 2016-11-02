@@ -10,13 +10,21 @@ kreator = ComponentCreator()
 
 SMS_T1tttt_TuneCUETP8M1 = kreator.makeMCComponent("SMS_T1tttt_TuneCUETP8M1","/SMS-T1tttt_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root")
 
+SMS_T1tttt_mGluino_1500_mLSP_100 = kreator.makeMCComponent("SMS_T1tttt_mGluino_1500_mLSP_100","/SMS-T1tttt_mGluino-1500_mLSP-100_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root")
+
+SMS_T1tttt_mGluino_1200_mLSP_800 = kreator.makeMCComponent("SMS_T1tttt_mGluino_1200_mLSP_800","/SMS-T1tttt_mGluino-1200_mLSP-800_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root")
+
+T1ttttSigPoints= [SMS_T1tttt_mGluino_1500_mLSP_100, SMS_T1tttt_mGluino_1200_mLSP_800]
+
+
+
 mcSamplesT1tttt = [SMS_T1tttt_TuneCUETP8M1]
 
 
 ### OFFICIAL SMS SIGNALS
 
 
-mcSamples = mcSamplesT1tttt
+mcSamples = T1ttttSigPoints
 
 samples = mcSamples
 

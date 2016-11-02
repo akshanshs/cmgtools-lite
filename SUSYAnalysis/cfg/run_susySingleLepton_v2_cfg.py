@@ -93,7 +93,7 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 from CMGTools.TTHAnalysis.analyzers.anyLepSkimmer import anyLepSkimmer
 anyLepSkim = cfg.Analyzer(
     anyLepSkimmer, name='anyLepSkimmer',
-    minLeptons = 0,
+    minLeptons = 1,
     maxLeptons = 999,
 )
 susyCoreSequence.insert(susyCoreSequence.index(lepAna)+1, anyLepSkim)
@@ -102,7 +102,7 @@ susyCoreSequence.insert(susyCoreSequence.index(lepAna)+1, anyLepSkim)
 from CMGTools.TTHAnalysis.analyzers.ttHSTSkimmer import ttHSTSkimmer
 ttHSTSkimmer = cfg.Analyzer(
   ttHSTSkimmer, name='ttHSTSkimmer',
-  minST = 150,
+  minST = 0,
   )
 
 ## HT skim
@@ -163,7 +163,7 @@ triggerFlagsAna.triggerBits = {
 #########################
 
 ## OTHER LEPTON SKIMMER
-anyLepSkim.minLeptons = 0
+anyLepSkim.minLeptons = 1
 anyLepSkim.maxLeptons = 999
 
 # GOOD LEPTON SKIMMER -- FROM TTH (in Core already)
@@ -204,9 +204,9 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-sample = 'data'
-#sample = 'Signal'
-test = 1
+#sample = 'data'
+sample = 'Signal'
+test = 0
 
 if sample == "MC":
 
@@ -217,7 +217,7 @@ if sample == "MC":
 
   # modify skim
   anyLepSkim.minLeptons = 1
-  ttHLepSkim.minLeptons = 0
+  ttHLepSkim.minLeptons = 1
 
   # -- new 74X samples
   #from CMGTools.RootTools.samples.samples_13TeV_74X import *
@@ -227,14 +227,14 @@ if sample == "MC":
   # MiniAODv2
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
-  from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2_dummy import *
+  from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *     #samples_13TeV_RunIISpring16MiniAODv2_dummy import *
 #  from CMGTools.RootTools.samples.samples_13TeV_MiniAODv2_Signals_desy import *
 #  selectedComponents = TTs + SingleTop #TTJets_SingleLepton
 
-  selectedComponents = QCDHT
+  selectedComponents = TT_InclPow  #TT_pow
   if test==1:
     # test a single component, using a single thread.
-    comp = QCD_HT300to500
+    comp = TTin_Pow #TT2L_Powheg #QCD_HT300to500
     comp.files = comp.files[:1]
     selectedComponents = [comp]
     comp.splitFactor = 2
@@ -289,17 +289,18 @@ elif sample == "Signal":
   # MiniAODv2
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
 #  from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
-  from CMGTools.RootTools.samples.samples_13TeV_MiniAODv2_Signals_desy import *
+  #from CMGTools.RootTools.samples.samples_13TeV_MiniAODv2_Signals_desy import *
+  from CMGTools.RootTools.samples.samples_80x_signal import *
   # Benchmarks
   #selectedComponents = [ T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1500to1525_mLSP_50to1125, T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
   # Rest
-  #selectedComponents = mcSamplesT1tttt
+  selectedComponents = [SMS_T1tttt_mGluino_1500_mLSP_100]  #T1ttttSigPoints #= [SMS_T1tttt_mGluino_1500_mLSP_100#mcSamplesT1tttt  #mcSamplesT1tttt = [SMS_T1tttt_TuneCUETP8M1]
   #selectedComponents = [T1tttt_mGo_1000to1050_mLSP_1to800, T1tttt_mGo_1225to1250_mLSP_1to1025, T1tttt_mGo_1325to1350_mLSP_1to1125, T1tttt_mGo_600to625_mLSP_250to375]
-  selectedComponents = [T1tttt_TuneCUETP8M1]#[T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
+  #selectedComponents = [T1tttt_TuneCUETP8M1]#[T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
 
   if test==1:
     # test a single component, using a single thread.
-    comp  = T1tttt_TuneCUETP8M1
+    comp  = SMS_T1tttt_mGluino_1500_mLSP_100  #SMS_T1tttt_TuneCUETP8M1 #T1tttt_TuneCUETP8M1
     comp.files = comp.files[:1]
     selectedComponents = [comp]
     comp.splitFactor = 1
@@ -443,7 +444,7 @@ if isSignal:
 # sequence.remove(ttHHTSkimmer)
 # sequence.remove(ttHSTSkimmer)
   sequence.remove(eventFlagsAna)
-  sequence.remove(hbheFilterAna)
+#  sequence.remove(hbheFilterAna)
 
 ## output histogram
 outputService=[]
