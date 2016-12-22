@@ -7,10 +7,10 @@
 
 lumi=36.5
 
-mca=susy-1lep/mca/mca-Spring16_All_sllSF_Moriond17.txt
+mca=susy-1lep/mca/mca-Spring16_All_sllSF_Moriond17top.txt
 cuts=susy-1lep/1l_basicCutsFullCutFlow.txt
-trees=trees/
-friends=friends/evVarFriend_{cname}.root
+trees=/nfs/dust/cms/group/susy-desy/Run2/MC/CMGtuples/NtupleDec12_HT350_looseLep_LT150Skim/
+friends=/nfs/dust/cms/group/susy-desy/Run2/MC/CMGtuples/NtupleDec12_HT350_looseLep_LT150Skim/friends_v3/evVarFriend_{cname}.root
 
 # QCD estimation, define QCD as signal
 python mcPlots.py \

@@ -1,27 +1,27 @@
-MET:     MET                                : 40,0,1200;  XTitle="MET [GeV]"
+#MET:     MET                                : 40,0,1200;  XTitle="MET [GeV]"
 MET_log:     MET                                : 40,0,1200;  XTitle="MET [GeV]", Logy
-HT:     HT                                : 40,0,3000;  XTitle="H_{T} [GeV]"
-HT_log:     HT                                : 40,0,3000;  XTitle="H_{T} [GeV]", Logy
+#HT:     HT                                : 40,0,3000;  XTitle="H_{T} [GeV]"
+HT_log:     HT                                : 40,400,3000;  XTitle="H_{T} [GeV]", Logy, YMax=1000000 , YMin=0.1
 #ST:     ST  : 40,0,1200;  XTitle="S_{T} [GeV]", Logy
-LT:     ST  : 40,0,1200;  XTitle="L_{T} [GeV]", Logy
-nJet:       nJets30Clean                            : 20,0,20   ;  XTitle="jet multiplicity"
-nJet_log:       nJets30Clean                            : 20,0,20   ;  XTitle="jet multiplicity", Logy
+LT_log:     ST  : 40,150,1200;  XTitle="L_{T} [GeV]", Logy, YMax=1000000 , YMin=0.1
+#nJet:       nJets30Clean                            : 20,0,20   ;  XTitle="jet multiplicity"
+nJet_log:       nJets30Clean                            : 20,0,20   ;  XTitle="jet multiplicity", Logy, YMax=100000 , YMin=0.1
 nBJet:      nBJetMedium30                          : 10,0,10   ;  XTitle="b-jet multiplicity (Med)", Logy
-dPhiLepW:   fabs(DeltaPhiLepW)                        : 60,0,3.141   ; XTitle="#Delta #varphi (lep\,W)", IncludeOverflows=False
-dPhiLepW_log:   fabs(DeltaPhiLepW)                        : 60,0,3.141   ; XTitle="#Delta #varphi (lep\,W)", IncludeOverflows=False, Logy, YMin=1e1
-Lp:     Lp      : 30,-0.5,2.5   ; XTitle="L_{p}", IncludeOverflows=False
-Lp_log:     Lp      : 30,-0.5,2.5   ; XTitle="L_{p}", IncludeOverflows=False, Logy
+#dPhiLepW:   fabs(DeltaPhiLepW)                        : 60,0,3.141   ; XTitle="#Delta #varphi (lep\,W)", IncludeOverflows=True
+dPhi_wide:   fabs(DeltaPhiLepW)                        : 60,0,3.141   ; XTitle="#Delta #varphi (lep\,W)", IncludeOverflows=True, Logy, YMin=1e1
+#Lp:     Lp      : 30,-0.5,2.5   ; XTitle="L_{p}", IncludeOverflows=True
+Lp_log:     Lp      : 30,-0.5,2.5   ; XTitle="L_{p}", IncludeOverflows=True, Logy, YMax=1000000 , YMin=0.1
 
 #Jets30Idx not useful anymore (because we clean on friend tree level)
 #Jet1pt: Jet_pt[Jets30Idx[0]] : 40,0,800; XTitle = "Lead Jet pt"
 #Jet2pt: Jet_pt[Jets30Idx[1]] : 40,0,800; XTitle = "2. Lead Jet pt"
 #
-#Jet1pt_log: Jet_pt[Jets30Idx[0]] : 40,0,800; XTitle = "Lead Jet pt", Logy
-#Jet2pt_log: Jet_pt[Jets30Idx[1]] : 40,0,800; XTitle = "2. Lead Jet pt", Logy
+JetPt1: Jet_pt[Jets30Idx[0]] : 40,70,800; XTitle = "Lead Jet pt", Logy, YMax=1000000 , YMin=0.1
+JetPt2: Jet_pt[Jets30Idx[1]] : 40,70,800; XTitle = "2. Lead Jet pt", Logy, YMax=1000000 , YMin=0.1
 
 # Leptons
-LepPt:     LepGood_pt[tightLepsIdx[0]]  : 40,0,600;  XTitle="Lep p_{T} [GeV]"
-LepPt_log:     LepGood_pt[tightLepsIdx[0]]  : 40,0,600;  XTitle="Lep p_{T} [GeV]", Logy
+#LepPt:     LepGood_pt[tightLepsIdx[0]]  : 40,0,600;  XTitle="Lep p_{T} [GeV]"
+LepPt_log:     LepGood_pt[tightLepsIdx[0]]  : 40,0,600;  XTitle="Lep p_{T} [GeV]", Logy, , YMax=1000000 , YMin=0.1
 # Eta
 EtaLep:     LepGood_eta[tightLepsIdx[0]]  : 40,-2.4,2.4 ;  XTitle="Lep #eta", Logy, MoreY=100
 #branches in friend tree gone
@@ -31,10 +31,10 @@ EtaLep:     LepGood_eta[tightLepsIdx[0]]  : 40,-2.4,2.4 ;  XTitle="Lep #eta", Lo
 #nTopTag : nHighPtTopTag : 5,-0.5,4.5; XTitle="nTopTag", Logy
 #nTopTagTau : nHighPtTopTagPlusTau23 : 5,-0.5,4.5; XTitle="nTopTagPlusTau23", Logy
 
-rho: rho : 50,0,50; XTitle="#rho"
-nVert: nVert : 50,0,50; XTitle="Nvert"
-nVertGen: nTrueInt : 50,0,50; XTitle="Nvert (gen)"
+#rho: rho : 50,0,50; XTitle="#rho"
+#nVert: nVert : 50,0,50; XTitle="Nvert"
+#nVertGen: nTrueInt : 50,0,50; XTitle="Nvert (gen)"
 
 rho_log: rho : 50,0,50; XTitle="#rho", Logy
-nVert_log: nVert : 50,0,50; XTitle="Nvert", Logy
+nVert_log: nVert : 50,0,50; XTitle="Nvert", Logy, YMax=1000000 , YMin=0.1
 nVertGen_log: nTrueInt : 50,0,50; XTitle="Nvert (gen)", Logy
