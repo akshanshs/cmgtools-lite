@@ -285,8 +285,14 @@ class EventVars1L_base:
             'Mll', #di-lepton mass
             'METfilters',
             #Datasets
-            'PD_JetHT', 'PD_SingleEle', 'PD_SingleMu', 'PD_MET'
+            'PD_JetHT', 'PD_SingleEle', 'PD_SingleMu', 'PD_MET',
+            
+            #Ra2b hack
+            'Ra2b_hack'
+        
             ]
+
+        
 
     def listBranches(self):
         return self.branches[:]
@@ -765,6 +771,17 @@ class EventVars1L_base:
             metp4 = getRecalcMET(metp4,event,corrJEC,smearJER)
 
         ret["MET"] = metp4.Pt()
+
+        ###Ra2b hack variables
+
+        ret['Ra2b_hack'] = True
+
+        if len(cJet30Clean) > 0:
+            for i,j in enumerate(cJet30Clean):
+                if j.pt < 200 : continue
+                if j.muEF > 0.5 and abs(acos(cos(j.phi -metp4.Phi()))) > (3.1416 - 0.4) : ret['Ra2b_hack'] = False
+
+
 
         ## MET NO HF
 #        metNoHFp4 = ROOT.TLorentzVector(0,0,0,0)
